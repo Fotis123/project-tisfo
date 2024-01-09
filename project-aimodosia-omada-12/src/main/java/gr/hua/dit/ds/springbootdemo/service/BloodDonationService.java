@@ -6,8 +6,12 @@ import gr.hua.dit.ds.springbootdemo.repository.SecretaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 @Service
 public class BloodDonationService {
@@ -50,7 +54,17 @@ public class BloodDonationService {
             return null;
         }
     }
-
+    public void LastDonation (Citizen citizen) {
+         Scanner scanner = new Scanner(System.in);
+         System.out.print("Enter the year: ");
+         int year = scanner.nextInt();
+         System.out.print("Enter the month: ");
+         int month = scanner.nextInt();
+         System.out.print("Enter the day: ");
+         int day = scanner.nextInt();
+         LocalDate LastDonationDate = LocalDate.of(year,month,day);
+         citizen.setLastBloodDonation(LastDonationDate);
+    }
     public void processBloodDonationRequest(int citizenId) {
         // Εδώ μπορείτε να προσθέσετε τη λογική για την επεξεργασία του αιτήματος αιμοδοσίας
         // Ενδεικτικά, μπορείτε να ενημερώσετε τον πολίτη ότι το αίτημα έχει επεξεργαστεί
@@ -64,6 +78,10 @@ public class BloodDonationService {
     public boolean eligibleForBloodDonation(Citizen citizen) {
         // Εδώ μπορείτε να προσθέσετε τους ελέγχους που κρίνετε απαραίτητους
         // Παράδειγμα: Εάν ο πολίτης έχει πραγματοποιήσει επιτυχημένες αιμοδοσίες στο παρελθόν
-        return citizen.getSuccessfulDonations() > 0;
+        LocalDate thirtyDaysAgo = LocalDate.now().minusDays(30);
+        if (citizen.getLastBloodDonation().isBefore(thirtyDaysAgo)) {
+            return true;
+        }
+        return false;
     }
 }

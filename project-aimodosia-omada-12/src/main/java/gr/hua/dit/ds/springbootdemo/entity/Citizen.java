@@ -2,6 +2,11 @@ package gr.hua.dit.ds.springbootdemo.entity;
 
 
 import gr.hua.dit.ds.springbootdemo.service.BloodDonationService;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
+
+import java.io.File;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Citizen {
     private boolean bloodDonor;
@@ -10,14 +15,26 @@ public class Citizen {
     private Integer Id;
     private String firstName;
     private String lastName;
-    private String bloodGroup; // Προσθήκη πεδίου για την ομάδα αίματος
-    // Άλλα πεδία που μπορεί να χρειάζεστε για τον πολίτη
+    private String Address;
+    private String bloodGroup;
+    private LocalDate lastBloodDonation;
+    private File BloodChemistryTest;
 
-    public Citizen(Integer id, String firstName, String lastName, String bloodGroup) {
+    public Citizen(Integer id, String firstName, String lastName, String bloodGroup, String Address, File BloodChemistryTest) {
         Id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.bloodGroup = bloodGroup;
+        this.Address = Address;
+        this.BloodChemistryTest = BloodChemistryTest;
+    }
+
+    public LocalDate getLastBloodDonation() {
+        return lastBloodDonation;
+    }
+
+    public void setLastBloodDonation(LocalDate lastBloodDonation) {
+        this.lastBloodDonation = lastBloodDonation;
     }
 
     public Integer getId() {
@@ -42,6 +59,22 @@ public class Citizen {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getAddress(){
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public File getBloodChemistryTest() {
+        return BloodChemistryTest;
+    }
+
+    public void setBloodChemistryTest(File bloodChemistryTest) {
+        BloodChemistryTest = bloodChemistryTest;
     }
 
     public String getBloodGroup() {
@@ -74,7 +107,8 @@ public class Citizen {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", bloodGroup='" + bloodGroup + '\'' +
-                // Προσθήκη πεδίων στο toString
+                ", Address='" + Address + '\'' +
+                ", BloodChemistryTest='" + BloodChemistryTest +
                 '}';
     }
 }
