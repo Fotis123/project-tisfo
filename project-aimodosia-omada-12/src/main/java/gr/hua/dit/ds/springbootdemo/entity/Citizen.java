@@ -11,7 +11,7 @@ import java.util.Date;
 public class Citizen {
     private boolean bloodDonor;
     private boolean bloodDonationRequestProcessed;
-    private int successfulDonations;
+    private Integer successfulDonations;
     private Integer Id;
     private String firstName;
     private String lastName;

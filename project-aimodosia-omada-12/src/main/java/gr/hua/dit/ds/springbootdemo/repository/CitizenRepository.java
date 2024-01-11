@@ -4,7 +4,14 @@ import gr.hua.dit.ds.springbootdemo.entity.Citizen;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Repository
 public interface CitizenRepository extends JpaRepository<Citizen, Integer> {
-    // Εδώ μπορείτε να προσθέσετε πρόσθετες μεθόδους αναζήτησης αν χρειαστεί
+    List<Citizen> findBySubmissionDateAfter(LocalDateTime submissionDate);
+
+    List<Citizen> findByProcessBloodDonationRequestProcessedTrue();
+
+    List<Citizen> findByBloodDonationRequestProcessedAndSubmissionDateAfter(boolean processed, LocalDateTime submissionDate);
 }

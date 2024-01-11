@@ -6,7 +6,6 @@ public class Secretary {
     private String firstName;
     private String lastName;
 
-    // Κατασκευαστής, getters, setters
 
     public Secretary(Integer id, String firstName, String lastName) {
         Id = id;
