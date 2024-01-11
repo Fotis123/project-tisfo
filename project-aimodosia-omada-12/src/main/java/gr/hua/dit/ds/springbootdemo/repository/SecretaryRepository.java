@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface SecretaryRepository extends JpaRepository<Secretary, Integer> {
-    Optional<Secretary> findById(int id);
+    Optional<Secretary> findById(int id); //επιστροφή ενός Secretary με βάση το καθορισμένο id
 
-    List<Secretary> findByFirstNameAndLastName(String firstName, String lastName);
+    List<Secretary> findByFirstNameAndLastName(String firstName, String lastName); //επιστροφή μίας λίστας με βάση το συγκεκριμένο firstName και LastName
 }

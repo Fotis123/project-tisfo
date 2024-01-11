@@ -18,26 +18,26 @@ public class BloodDonationService {
 
 
     @Autowired
-    private CitizenRepository citizenRepository;
+    private CitizenRepository citizenRepository; //ενσωμάτωση του citizenRepository
 
     @Autowired
-    private SecretaryRepository secretaryRepository;
+    private SecretaryRepository secretaryRepository; //ενσωμάτωση του secretaryRepository
 
     public List<Citizen> getAllCitizens() {
         return citizenRepository.findAll();
-    }
+    } //επιστροφή λίστας με τους εγγεγραμμένους πολίτες
 
     public Optional<Citizen> getCitizenById(int id) {
         return citizenRepository.findById(id);
-    }
+    } //επιστροφή πληροφοριών πολίτη με βάση το id
 
     public List<Secretary> getAllSecretaries() {
         return secretaryRepository.findAll();
-    }
+    } //επιστροφή λίστας των εγγεγραμμένων γραμματέων
 
     public Optional<Secretary> getSecretaryById(int id) {
         return secretaryRepository.findById(id);
-    }
+    } //επιστροφή πληροφοριών γραμματέα με βάση το id
 
     public Citizen registerBloodDonor(Citizen citizen) {
         // Ελέγχουμε αν ο πολίτης πληροί τις προϋποθέσεις για να γίνει αιμοδότης
@@ -57,7 +57,7 @@ public class BloodDonationService {
             return null;
         }
     }
-    public void LastDonation (Citizen citizen) {
+    public void LastDonation (Citizen citizen) { //Δημιουργία scanner και input του χρήστη για τη τελευταία αιμοδοσία
          Scanner scanner = new Scanner(System.in);
          System.out.print("Enter the year: ");
          int year = scanner.nextInt();

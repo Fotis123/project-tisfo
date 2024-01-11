@@ -1,18 +1,18 @@
 package gr.hua.dit.ds.springbootdemo.entity;
 
 public class Secretary {
-
+    //πεδία για τον/την γραμματέα
     private Integer Id;
     private String firstName;
     private String lastName;
 
-
+    //Constructor του/της γραμματέα
     public Secretary(Integer id, String firstName, String lastName) {
         Id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
+    //Getters Setters για το κάθε πεδίο
     public Integer getId() {
         return Id;
     }
@@ -38,7 +38,7 @@ public class Secretary {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //toString μέθοδος για ανασύνταξη των δεδομένων
         return "Secretary{" +
                 "Id=" + Id +
                 ", firstName='" + firstName + '\'' +

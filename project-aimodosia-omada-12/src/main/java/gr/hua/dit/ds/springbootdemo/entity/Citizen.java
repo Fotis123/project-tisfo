@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Citizen {
+    //Στοιχεία του πολίτη
     private boolean bloodDonor;
     private boolean bloodDonationRequestProcessed;
     private Integer successfulDonations;
@@ -20,6 +21,7 @@ public class Citizen {
     private LocalDate lastBloodDonation;
     private File BloodChemistryTest;
 
+    //Constructor για τον πολίτη
     public Citizen(Integer id, String firstName, String lastName, String bloodGroup, String Address, File BloodChemistryTest) {
         Id = id;
         this.firstName = firstName;
@@ -28,7 +30,7 @@ public class Citizen {
         this.Address = Address;
         this.BloodChemistryTest = BloodChemistryTest;
     }
-
+    //Setters Getters για το κάθε πεδίο
     public LocalDate getLastBloodDonation() {
         return lastBloodDonation;
     }
@@ -96,12 +98,12 @@ public class Citizen {
         return successfulDonations;
     }
     // Καλεί την μέθοδο eligibleForBloodDonation του BloodDonationService
-    public boolean eligibleForBloodDonation(BloodDonationService bloodDonationService) {
+    public boolean eligibleForBloodDonation(BloodDonationService bloodDonationService) { //Έλεγχος για καταλληλότητα πολίτη για αιμοδοσία
         return bloodDonationService.eligibleForBloodDonation(this);
     }
 
     @Override
-    public String toString() {
+    public String toString() { //toString μέθοδος για ανασύνταξη των δεδομένων του πολίτη
         return "Citizen{" +
                 "Id=" + Id +
                 ", firstName='" + firstName + '\'' +
